@@ -30,6 +30,15 @@ const Expenses=(props)=>{
         location={props.items[3].location}
         date={props.items[3].date}
        />
+        {/* {props.items.map((expense)=>{
+                console.log(expense.amount);
+                 <ExpenseItem
+                 title={expense.title}
+                 amount={expense.amount}
+                 location={expense.location}
+                 date={expense.date}
+                 />
+            })} */}
        </Card>
 
     );

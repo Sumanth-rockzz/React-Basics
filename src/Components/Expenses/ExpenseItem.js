@@ -6,6 +6,7 @@ import "./ExpenseItem.css";
 
 
 const ExpenseItem=(props)=>{
+  console.log(props.title)
   const [title,setTitle]=useState(props.title);
   const [amount,setAmount]=useState(props.amount);
   console.log("react evaluted");
