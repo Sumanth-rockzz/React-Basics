@@ -1,3 +1,4 @@
+import React, {useState} from "react";
 import ExpenseDate from "./ExpenseDate";
 import ExpenseDetails from "./ExpenseDetails";
 import Card from "../UI/Card";
@@ -5,18 +6,24 @@ import "./ExpenseItem.css";
 
 
 const ExpenseItem=(props)=>{
-  const tiltleclickHandler=()=>{
-    console.log("clicked");
+  const [title,setTitle]=useState(props.title);
+  const [amount,setAmount]=useState(props.amount);
+  console.log("react evaluted");
+//using state will change user interface dynamic
+  const titleclickHandler=()=>{
+      setTitle('Updated!!')
+    console.log(title);
   }
-  const deleteclickHandler=()=>{
-    console.log("deleted");
+  const expenseclickHandler=()=>{
+    setAmount(100);
+    console.log(amount);
   }
   return (
     <Card className="expense-item">
       <ExpenseDate date={props.date}/>
-      <ExpenseDetails amount={props.amount}  location={props.location}  title={props.title} />
-      <button onClick={tiltleclickHandler}>Change Title</button>
-      <button onClick={deleteclickHandler}>Delete</button>
+      <ExpenseDetails amount={amount}  location={props.location}  title={title} />
+      <button onClick={titleclickHandler}>Change Title</button>
+      <button onClick={expenseclickHandler}>Change ExpenseAmount</button>
     </Card>
   );
 }
