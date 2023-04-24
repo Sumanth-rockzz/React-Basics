@@ -1,10 +1,10 @@
-//import React from 'react';
+import React, { useState } from 'react';
 
 import Expenses from './Components/Expenses/Expenses';
 import NewExpense from './Components/NewExpense/newExpense';
 
 const App=()=>{
-  const expenses=[
+/*    expenses=[
   {
     title:"Zomato",
     amount:100,
@@ -30,7 +30,15 @@ const App=()=>{
     date:new Date(2023,4,6)
   }
 
-]
+] */
+
+const [expenses,setExpenses]=useState([]);
+const addExpenseHandler=(expense)=>{
+  setExpenses((prevExpenses)=>{
+     return  [...prevExpenses,expense]
+  })
+  
+}
 //old approach importing react
 
 /* return React.createElement(
@@ -44,7 +52,7 @@ const App=()=>{
 
   return (
     <div>
-      <NewExpense/>
+      <NewExpense onAddExpense={addExpenseHandler}/>
       <Expenses items={expenses}/>
     </div>
   );
