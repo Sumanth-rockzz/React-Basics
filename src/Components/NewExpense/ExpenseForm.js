@@ -7,49 +7,29 @@ const ExpenseForm = (props) => {
       const [enteredAmount,setEnteredAmount]=useState('');
       const [enteredDate,setEnteredDate]=useState(''); 
 
-      //converting into one state object
-      /* const [userInput,setUserInput]=useState(
-        {
-          enteredTitle:'',
-          enteredAmount:'',
-          enteredDate:''
-        }
-      ) */
-    
+      
+      
+
     const titleChangeHandler=(e)=>{
       setEnteredTitle(e.target.value);
-     /*  setUserInput({
-        ...userInput,
-        enteredTitle:e.target.value
-      }) */
+   
     }
     const amountChangeHandler=(e)=>{
       setEnteredAmount(e.target.value);
-     /*  setUserInput({
-        ...userInput,
-        enteredTitle:e.target.value
-      }) */
+  
   }
   const dateChangeHandler=(e)=>{
 
     setEnteredDate(e.target.value);
 
-    /* setUserInput({
-      ...userInput,
-      enteredDate:e.target.value
-    }) */
-
-    //this is prefered than above due to schedules in react and this gives latest updated state
-   /*  setUserInput((prevstate)=>{
-        return {...prevstate,enteredDate:e.target.value}
-    }); */
+   
 }
 
  const submitHandler=(e)=>{
     e.preventDefault();
     const expenseData={
       title:enteredTitle,
-      amount:enteredAmount,
+      amount:+enteredAmount,
       date:new Date(enteredDate)
     }
     props.onSaveExpenseData(expenseData);
@@ -75,6 +55,7 @@ const ExpenseForm = (props) => {
         </div>
       </div>
       <div className="new-expense__actions">
+        <button type="button" onClick={props.onStopEditingHandler}>Cancel</button>
         <button type="submit">Add Expense</button>
       </div>
     </form>
